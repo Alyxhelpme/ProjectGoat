@@ -15,10 +15,14 @@ public class Personaje : MonoBehaviour {
     void Start() {
         Debug.Log("START");
         rb=GetComponent<Rigidbody>();
+        rb.freezeRotation=true;
+        
+
     }
     void Update() {
+        rb.AddForce(new Vector3(.7f,0,0));
         if(Input.GetKeyDown(KeyCode.Space)){
-            rb.AddForce(new Vector3(0,1000,0));
+            rb.AddForce(new Vector3(0,200,0));
         }
     }
 
@@ -33,14 +37,18 @@ public class Personaje : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision c){ //Collision tiene info detallada de la colision 
-        UnityEngine.Debug.Log("Start");
+        UnityEngine.Debug.Log("goatCrash");
         print("onCollisionStart" + c.contacts[0]);
         print(c.transform.name);
+        // if(c.transform.name=="Cube"){
+        //     rb.velocity=Vector3.zero;    
+            
+        // }
         
 
     }
     void OnCollisionStay(Collision c){
-        //print("onCollisionStay");
+        //print("onCollisionStay")    
     }
     void OnCollisionExit(Collision c){  
         print("onCollisionExit");

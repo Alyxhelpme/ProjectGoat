@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6cd79b20bb669f248af15c13111062b9
+guid: 13b5deee20a07f34bad8276903d70634
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,38 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material #143
-    second: {fileID: 2100000, guid: 3dd67e35cdec3ea449ce82f57be355de, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #144
-    second: {fileID: 2100000, guid: b4e3f9a37c7797d40b108a289d46fd15, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #145
-    second: {fileID: 2100000, guid: be71609fcb7d9534d9addc82135a2dc7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #146
-    second: {fileID: 2100000, guid: 6c11d85f08c154a4c9812395c137487e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material #181
-    second: {fileID: 2100000, guid: be81db7ed55031a4cb739c2575cc522c, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: txtr01
-    second: {fileID: 2800000, guid: bbc6ca36065f71e4db1899e2f6b690a9, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: txtr02
-    second: {fileID: 2800000, guid: 9164c42bbd343ec46a30a181995748b7, type: 3}
+      name: Goat_Bagot_Adult_Texture_Opt2Mat
+    second: {fileID: 2100000, guid: e622ba970110b6845b14567fd1229d1a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -50,7 +20,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -80,7 +51,7 @@ ModelImporter:
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
@@ -113,10 +84,15 @@ ModelImporter:
     serializedVersion: 3
     human: []
     skeleton:
-    - name: uploads_files_835487_Goat(Clone)
+    - name: Goat(Clone)
       parentName: 
-      position: {x: -0, y: 6.1239033, z: 1.165755}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Goat_Bagot_Adult_Texture_Opt2
+      parentName: Goat(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5

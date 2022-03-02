@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
-
+using  UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Personaje : MonoBehaviour {
@@ -40,10 +40,10 @@ public class Personaje : MonoBehaviour {
         UnityEngine.Debug.Log("goatCrash");
         print("onCollisionStart" + c.contacts[0]);
         print(c.transform.name);
-        // if(c.transform.name=="Cube"){
-        //     rb.velocity=Vector3.zero;    
-            
-        // }
+        if(c.transform.name=="Cube"){
+        //     rb.velocity=Vector3.zero;
+            SceneManager.LoadScene("Game");
+        }
         
 
     }

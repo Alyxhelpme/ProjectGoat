@@ -11,14 +11,15 @@ public class Personaje : MonoBehaviour {
     //primitivo: tipo de dato basico que se traduce directamente o bytes de memoria: float, int, char
     //serializable: oobjeto representable en texto y viceversa.
 
-    public float velocidad=5;
+    public float velocidad=70;
     public float dummy; 
     
-    public Text textito; //Cuando se exponga un objeto que se espera que se mande del editor hay posibilidad de que sea nulo, nullptr
+    //public Text textito; //Cuando se exponga un objeto que se espera que se mande del editor hay posibilidad de que sea nulo, nullptr
 
     //CLONACION/INSTACIANDO OBJETOS
 
     public GameObject original;
+    public Transform referenciaPosicion;
     
 
     //Por que exponer valores al editor? Por la facilidad de cambio de comportamiento sin meterse en el codigo
@@ -35,9 +36,9 @@ public class Personaje : MonoBehaviour {
         
         Debug.Log("START");
 
-        textito.fontSize = 30;
-        textito.fontStyle = FontStyle.Italic;
-        textito.text = "BUENAS BUENAS";
+        // textito.fontSize = 30;
+        // textito.fontStyle = FontStyle.Italic;
+        // textito.text = "BUENAS BUENAS";
     }
 
     // Update is called once p.er frame (ENGINE LOOP)
@@ -76,13 +77,17 @@ public class Personaje : MonoBehaviour {
 
         // }
 
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             
             //detona cuando
             // cuadro anterior está libre
             // cuadro actual esta presionado
             // print("KEY");
-            Instantiate(original);
+            Instantiate(
+                original,
+                referenciaPosicion.position,
+                referenciaPosicion.rotation
+                );
 
         }
 
@@ -134,12 +139,8 @@ public class Personaje : MonoBehaviour {
     //3. 3 momentos en la vida de la colision
     void OnCollisionEnter(Collision c){ //Collision tiene info detallada de la colision 
         UnityEngine.Debug.Log("Start");
-        print("onCollisionStart" + c.transform.name);
-        print("TAG: " + c.transform.tag);
-        print("LAYER: " + c.gameObject.layer);
-        
-
-        //destroy - destruye un game object o un 
+        print("onCollisionStart" + c.contacts[0]);
+        print(c.transform.name);
         
 
     }
@@ -155,10 +156,11 @@ public class Personaje : MonoBehaviour {
 
     void OnTriggerEnter(Collider c){ // collider no tiene info de la fisica, es solo una referencia al collider del objeto 
         print("Trigger Enter");
+        //Se destruye un gameobject completo 
     }
     
     void OnTriggerStay(Collider c){
-        print("Trigger Stay");
+        //print("Trigger Stay");
     }
     
     void OnTriggerExit(Collider c){

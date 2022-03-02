@@ -6,11 +6,11 @@ public class bala : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start(){
+        Destroy(gameObject,3);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(0,5*Time.deltaTime,0);
+    void Update(){
+        transform.Translate(0,5*Time.deltaTime,0,Space.World);
     }
 }

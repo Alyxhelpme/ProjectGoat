@@ -8,17 +8,35 @@ using UnityEngine.SceneManagement;
 public class Personaje : MonoBehaviour {
     [SerializeField]
     private Rigidbody rb;
+
+    public GameObject original;
     public float delay=3; //El tiempo de delay para el cambio de escena
     
-    public float velocidad=70;
     void Awake() { print("EJECUTANDO");}
-    void Start() {
+    async void Start() {
         Debug.Log("START");
         rb=GetComponent<Rigidbody>();
         rb.freezeRotation=true;
+
+
+            float PosX= -89.76f;
+            float PosY= 0.5f;
+            float PosZ= 116.7f;
+
+            // para clonar utilizamos el método instantiate
+            //Instantiate(original);
+            for(int i = 0; i <3; i++){
+                PosX = Random.Range(-70.76f, 7);
+                PosY = Random.Range(1,3);
+                Instantiate(
+                    original, 
+                    new Vector3(PosX,PosY,PosZ),
+                    new Quaternion()
+                );
+            }
     }
     void Update() {
-        rb.AddForce(new Vector3(.7f,0,0));
+        rb.AddForce(new Vector3(.2f,0,0));
         if(Input.GetKeyDown(KeyCode.Space)){
             rb.AddForce(new Vector3(0,200,0));
         }
@@ -30,7 +48,6 @@ public class Personaje : MonoBehaviour {
     }
 
     void fixedUpdate() {
-
 
     }
 

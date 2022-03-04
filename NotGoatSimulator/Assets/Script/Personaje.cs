@@ -10,14 +10,13 @@ public class Personaje : MonoBehaviour {
     private Rigidbody rb;
 
     public GameObject original;
-    public float delay=3; //El tiempo de delay para el cambio de escena
+
     
     void Awake() { print("EJECUTANDO");}
-    async void Start() {
+    void Start() {
         Debug.Log("START");
         rb=GetComponent<Rigidbody>();
         rb.freezeRotation=true;
-
 
             float PosX= -89.76f;
             float PosY= 0.5f;
@@ -25,11 +24,11 @@ public class Personaje : MonoBehaviour {
 
             // para clonar utilizamos el método instantiate
             //Instantiate(original);
-            for(int i = 0; i <3; i++){
+            for(int i = 0; i <7; i++){
                 PosX = Random.Range(-70.76f, 7);
                 PosY = Random.Range(1,3);
                 Instantiate(
-                    original, 
+                    original,
                     new Vector3(PosX,PosY,PosZ),
                     new Quaternion()
                 );
@@ -64,9 +63,10 @@ public class Personaje : MonoBehaviour {
         UnityEngine.Debug.Log("goatCrash");
         print("onCollisionStart" + c.contacts[0]);
         print(c.transform.name);
-        if(c.transform.name=="Cube"){
+        if(c.transform.name=="Cube" || c.transform.name=="Cube(Clone)"){
         //     rb.velocity=Vector3.zero;
             StartCoroutine(reset());
+            rb.freezeRotation=false;
         }
 
     }
@@ -75,18 +75,5 @@ public class Personaje : MonoBehaviour {
     }
     void OnCollisionExit(Collision c){  
         print("onCollisionExit");
-    }
-
-    void OnTriggerEnter(Collider c){ // collider no tiene info de la fisica, es solo una referencia al collider del objeto 
-        print("Trigger Enter");
-        //Se destruye un gameobject completo 
-    }
-    
-    void OnTriggerStay(Collider c){
-        //print("Trigger Stay");
-    }
-    
-    void OnTriggerExit(Collider c){
-        print("Trigger exit");
     }
 }

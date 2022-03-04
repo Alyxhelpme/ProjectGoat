@@ -16,9 +16,6 @@ public class Personaje : MonoBehaviour {
     
     void Awake() { 
         print("EJECUTANDO");
-        deathscounter.fontSize=20;
-        deathscounter.fontStyle=FontStyle.Bold;
-        deathscounter.text="You crashed "+cont+" times!";
     }
     void Start() {
         Debug.Log("START");
@@ -62,7 +59,6 @@ public class Personaje : MonoBehaviour {
     // So, in this case as we want the scene to change after a few seconds we use yield command with WaitForSeconds. 
 
     IEnumerator reset(){
-        cont++;
         yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene("Game");
     }
@@ -73,6 +69,8 @@ public class Personaje : MonoBehaviour {
         print(c.transform.name);
         if(c.transform.name=="Cube" || c.transform.name=="Cube(Clone)"){
         //     rb.velocity=Vector3.zero;
+            deathscounter.fontStyle=FontStyle.Bold;
+            deathscounter.text="You crashed!";
             StartCoroutine(reset());
             rb.freezeRotation=false;
         }

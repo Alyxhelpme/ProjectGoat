@@ -10,9 +10,16 @@ public class Personaje : MonoBehaviour {
     private Rigidbody rb;
 
     public GameObject original;
+    public Text deathscounter;
+    public int cont;
 
     
-    void Awake() { print("EJECUTANDO");}
+    void Awake() { 
+        print("EJECUTANDO");
+        deathscounter.fontSize=20;
+        deathscounter.fontStyle=FontStyle.Bold;
+        deathscounter.text="You crashed "+cont+" times!";
+    }
     void Start() {
         Debug.Log("START");
         rb=GetComponent<Rigidbody>();
@@ -55,6 +62,7 @@ public class Personaje : MonoBehaviour {
     // So, in this case as we want the scene to change after a few seconds we use yield command with WaitForSeconds. 
 
     IEnumerator reset(){
+        cont++;
         yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene("Game");
     }

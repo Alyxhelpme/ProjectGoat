@@ -9,7 +9,7 @@ public class Personaje : MonoBehaviour {
     [SerializeField]
     private Rigidbody rb;
 
-    public GameObject original;
+    public GameObject obstaculo;
     public Text deathscounter;
     public int cont;
 
@@ -18,9 +18,8 @@ public class Personaje : MonoBehaviour {
         print("EJECUTANDO");
     }
     void Start() {
-        Debug.Log("START");
         rb=GetComponent<Rigidbody>();
-        rb.freezeRotation=true;
+        //rb.freezeRotation=true;
 
             float PosX= -89.76f;
             float PosY= 0.5f;
@@ -32,16 +31,16 @@ public class Personaje : MonoBehaviour {
                 PosX = Random.Range(-70.76f, 7);
                 PosY = Random.Range(1,3);
                 Instantiate(
-                    original,
+                    obstaculo,
                     new Vector3(PosX,PosY,PosZ),
                     new Quaternion()
                 );
             }
     }
     void Update() {
-        rb.AddForce(new Vector3(.2f,0,0));
+        //rb.AddForce(new Vector3(.2f,0,0));
         if(Input.GetKeyDown(KeyCode.Space)){
-            rb.AddForce(new Vector3(0,200,0));
+            rb.AddForce(new Vector3(.2f,200,0));
         }
     }
 
@@ -58,21 +57,19 @@ public class Personaje : MonoBehaviour {
     //  IEnumerator is used to declare the declaration itself, using a "return yield" pauses the execution of the method
     // So, in this case as we want the scene to change after a few seconds we use yield command with WaitForSeconds. 
 
-    IEnumerator reset(){
-        yield return new WaitForSeconds(.5f);
+    private IEnumerator reset(){
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("Game");
     }
 
     void OnCollisionEnter(Collision c){ //Collision tiene info detallada de la colision 
-        UnityEngine.Debug.Log("goatCrash");
-        print("onCollisionStart" + c.contacts[0]);
         print(c.transform.name);
         if(c.transform.name=="Cube" || c.transform.name=="Cube(Clone)"){
         //     rb.velocity=Vector3.zero;
             deathscounter.fontStyle=FontStyle.Bold;
             deathscounter.text="You crashed!";
             StartCoroutine(reset());
-            rb.freezeRotation=false;
+            //rb.freezeRotation=false;
         }
 
     }

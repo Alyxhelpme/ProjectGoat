@@ -20,15 +20,16 @@ public class Personaje : MonoBehaviour {
         rb=GetComponent<Rigidbody>();
         //rb.freezeRotation=true;
 
-            float PosX= -89.76f;
-            float PosY= 0.5f;
+            float PosX;
+            float PosY;
             float PosZ= 116.7f;
 
             // para clonar utilizamos el método instantiate
             //Instantiate(original);
-            for(int i = 0; i <7; i++){
-                PosX = Random.Range(-70.76f, 7);
+            for(int i = 0; i <6; i++){
+                PosX = Random.Range(-104.35f, -36.32f);
                 PosY = Random.Range(1,3);
+                PosZ = Random.Range(124.11f,112.29f);
                 Instantiate(
                     obstaculo,
                     new Vector3(PosX,PosY,PosZ),
@@ -37,13 +38,19 @@ public class Personaje : MonoBehaviour {
             }
     }
     void Update() {
+        //For the rotation of the goat whe're not using raycast since it forefully needs the cast to hit with something for it to face it.
+        Vector3 mouseScreenPosition=new Vector3(Input.mousePosition.x,Input.mousePosition.y,Input.mousePosition.y);
+        var mousePosition=Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        transform.LookAt(mousePosition);
         float v = Input.GetAxis("Horizontal");
         float h = Input.GetAxis("Vertical");
 
-        transform.Rotate(h,v,0);
+        //transform.Rotate(h,v,0);
         
         if(Input.GetKeyUp(KeyCode.Space)){
-            rb.AddForce(new Vector3(50,200,0));
+            mousePosition.Normalize();
+            rb.AddForce(mousePosition*70);
+            rb.AddForce(new Vector3(0,200,0));
 
         }
 

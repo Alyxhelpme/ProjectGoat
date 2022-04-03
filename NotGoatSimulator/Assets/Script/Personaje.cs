@@ -6,12 +6,11 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Personaje : MonoBehaviour {
-    [SerializeField]
-    private Rigidbody rb;
+    [SerializeField] private Rigidbody rb;
 
-    public GameObject obstaculo;
-    public Text deathscounter;
-    public int cont;
+    [SerializeField] private GameObject obstaculo;
+    [SerializeField] private Text deathscounter;
+    private int cont;
 
     
     void Awake() { 
@@ -38,10 +37,16 @@ public class Personaje : MonoBehaviour {
             }
     }
     void Update() {
-        //rb.AddForce(new Vector3(.2f,0,0));
-        if(Input.GetKeyDown(KeyCode.Space)){
-            rb.AddForce(new Vector3(.2f,200,0));
+        float v = Input.GetAxis("Horizontal");
+        float h = Input.GetAxis("Vertical");
+
+        transform.Rotate(h,v,0);
+        
+        if(Input.GetKeyUp(KeyCode.Space)){
+            rb.AddForce(new Vector3(50,200,0));
+
         }
+
     }
 
     void lateUpdate() {
@@ -77,6 +82,6 @@ public class Personaje : MonoBehaviour {
         //print("onCollisionStay")    
     }
     void OnCollisionExit(Collision c){  
-        print("onCollisionExit");
+        //print("onCollisionExit");
     }
 }

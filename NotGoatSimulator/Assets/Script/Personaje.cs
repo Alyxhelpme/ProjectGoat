@@ -6,17 +6,21 @@ using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Personaje : MonoBehaviour {
+
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private GameObject obstaculo;
     [SerializeField] private Text deathscounter;
-    private int cont;
+    [SerializeField] private GameObject NintendoGod;
+    public bool justOneNintendoGod;
 
     
     void Awake() { 
         print("EJECUTANDO");
+        DontDestroyOnLoad(NintendoGod);
     }
     void Start() {
+        justOneNintendoGod=true;
         rb=GetComponent<Rigidbody>();
         //rb.freezeRotation=true;
 
@@ -56,8 +60,21 @@ public class Personaje : MonoBehaviour {
 
     }
 
-    void lateUpdate() {
-
+    void LateUpdate() {
+        if(transform.position.z<=107f && transform.position.x>=-30){
+            while(justOneNintendoGod==true){
+                Instantiate(
+                NintendoGod,
+                new Vector3(-19.7f,27.86f,72.91f),
+                Quaternion.Euler(39.34f,-16.252f,3.302f)
+            );
+                justOneNintendoGod=false;
+            }
+            
+        }
+        if(transform.position.z<=80f && transform.position.y>=24f){
+            SceneManager.LoadScene(0);
+        }
 
     }
 
@@ -70,7 +87,7 @@ public class Personaje : MonoBehaviour {
     // So, in this case as we want the scene to change after a few seconds we use yield command with WaitForSeconds. 
 
     private IEnumerator reset(){
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("Game");
     }
 
@@ -85,10 +102,7 @@ public class Personaje : MonoBehaviour {
         }
 
     }
-    void OnCollisionStay(Collision c){
-        //print("onCollisionStay")    
-    }
-    void OnCollisionExit(Collision c){  
-        //print("onCollisionExit");
+    public bool getGod(){
+        return this.justOneNintendoGod;
     }
 }

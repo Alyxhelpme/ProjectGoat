@@ -6,13 +6,9 @@ using UnityEngine.SceneManagement;
 public class menuScript : MonoBehaviour
     
 {
-    void Awake(){
-        GameObject.FindGameObjectWithTag("nintendo");    
-    }
-    public void onClick(){
+    void Update(){
         if(Input.GetKeyDown(KeyCode.Space)){
             SceneManager.LoadScene("Game");
-        }
-         
+        }   
     }
 }

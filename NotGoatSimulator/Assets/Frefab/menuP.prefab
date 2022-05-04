@@ -136,7 +136,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 13, y: 27}
-  m_SizeDelta: {x: 300, y: 80}
+  m_SizeDelta: {x: 450, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7081447838552362693
 CanvasRenderer:
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -168,10 +168,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 19a7d25d771ca7146adf072a43083ef6, type: 3}
-    m_FontSize: 12
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 111
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -179,9 +179,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'REMEMBER THAT THE ANSWER IS IN THE SKY.
-
-    PRESS SPACE BAR TO BEGIN.'
+  m_Text: REMEMBER THAT THE ANSWER IS IN THE SKY.
 --- !u!114 &7081447838552362691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +194,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   On: 1
   reset: 0
-  FinalText: "REMEMBER THAT THE ANSWER IS IN THE SKY. \nPRESS SPACE BAR TO BEGIN.\n"
+  FinalText: 'REMEMBER THAT THE ANSWER IS IN THE SKY.
+
+'
   TotalTypeTime: 0.5
   TypeRate: 0
   RandomCharactor: 
